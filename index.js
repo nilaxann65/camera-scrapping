@@ -1,11 +1,9 @@
 const puppeteer = require('puppeteer');
 
 const variables = require('./variables');
-const utils = require('./utils');
 
 const cities = variables.Variables.CITIES;
 const schedules = variables.Variables.SCHEDULES;
-const formatDate = utils.formatDate;
 
 const dateStart = new Date("01/01/2023");
 const dateEnd = new Date("04/30/2023");
@@ -25,15 +23,37 @@ const dateEnd = new Date("04/30/2023");
                 await page.type('#username', city.creadentials.username);
                 await page.type('#password', city.creadentials.password);
                 await page.click('.btn.btn-primary.login-btn');
-                await timeout(10000); //Cambiar por un waitforSelector
+                await page.waitForSelector('.pointer.ng-binding')
                 await page.goto(camera.report_url);
                 await page.waitForSelector('.Wdate.ng-isolate-scope');
 
                 while (date < dateEnd) {
-                    await page.type('.Wdate.ng-isolate-scope', formatDate(date));
+                    // await page.$eval('.Wdate.ng-isolate-scope', (el, old_date) => {
+                    //     const date = new Date(old_date);
+                    //     const day = date.getDate();
+                    //     const month = date.getMonth() + 1;
+                    //     const year = date.getFullYear();
+                    //     console.log(date);
+                    //     el.value = `${year}-${month}-${day}`;
+                    // }, date);
                     await page.click('.btn.search-btn');
-                    await timeout(1000);//TODO añadir un waitforSelector para el tablehead
-                    //logica de extraer los datos
+                    await page.waitForSelector('.table-body > *', { timeout: 10000 });
+                    console.log("entró");
+
+                    const traficCounter = await page.evaluate(() => {
+                        console.log("simon");
+                        const divs = document.querySelectorAll('.table-body > *');
+                        console.log(divs);
+                        const traficCounter = [];
+                        for (const div of divs) {
+                            const spans = div.querySelectorAll('span');
+                            console.log(spans[0].textContent);
+                            console.log(spans[1].textContent);
+                        }
+                        return traficCounter;
+                    });
+
+                    console.log(traficCounter);
 
                     date.setDate(date.getDate() + 1);
                 }
