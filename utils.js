@@ -6,6 +6,10 @@ function formatDate(old_date) {
     return `${year}-${month}-${day}`;
 }
 
+function exportToFile(data) {
+
+}
+
 module.exports = {
     formatDate
 }
