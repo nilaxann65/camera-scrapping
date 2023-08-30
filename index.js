@@ -1,21 +1,17 @@
 const puppeteer = require('puppeteer');
-
 const utils = require('./utils')
-const variables = require('./variables');
-
-const cities = variables.Variables.CITIES;
-
-const dateStart = new Date("01/01/2023");
-const dateEnd = new Date("04/30/2023");
+const { Variables } = require("./variables");
 
 const fileName = `file_${new Date().toISOString().replace(/:/g, '-')}`;
+const dateStart = new Date("01/01/2023");
+const dateEnd = new Date("04/30/2023");
 
 (async () => {
     const browser = await puppeteer.launch({
         headless: false
     });
 
-    for (const city of cities) {
+    for (const city of Variables.CITIES) {
         for (const branchOffice of city.branchOffices) {
             const schedule = utils.findSchedule(branchOffice.id);
             for (const camera of branchOffice.cameras) {
