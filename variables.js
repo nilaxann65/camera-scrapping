@@ -52,101 +52,83 @@ class Variables {
     static SCHEDULES = [
         {
             branchOffices: [1, 3, 4, 5],
-            schedules: {
-                LUNES: {
+            schedules: [
+                {//Lunes
                     start: '09:00',
                     end: '21:00'
-                },
-                MARTES: {
+                }, {//Martes
                     start: '09:00',
                     end: '21:00'
-                },
-                MIERCOLES: {
+                }, {//Miercoles
                     start: '09:00',
                     end: '21:00'
-                },
-                JUEVES: {
+                }, {//Jueves
                     start: '09:00',
                     end: '21:00'
-                },
-                VIERNES: {
+                }, {//Viernes
                     start: '09:00',
                     end: '21:00'
-                },
-                SABADO: {
+                }, {//Sabado
                     start: '09:00',
                     end: '21:00'
-                },
-                DOMINGO: { //Tambien aplica para feriados
+                }, {//Domingo y feriados
                     start: '10:00',
                     end: '19:00'
                 }
-            }
+            ]
         },
         {
             branchOffices: [2],
-            schedules: {
-                LUNES: {
+            schedules: [
+                {//Lunes
                     start: '09:00',
                     end: '21:00'
-                },
-                MARTES: {
+                }, {//Martes
                     start: '09:00',
                     end: '21:00'
-                },
-                MIERCOLES: {
+                }, {//Miercoles
                     start: '09:00',
                     end: '21:00'
-                },
-                JUEVES: {
+                }, {//Jueves
                     start: '09:00',
                     end: '21:00'
-                },
-                VIERNES: {
+                }, {//Viernes
                     start: '09:00',
                     end: '21:00'
-                },
-                SABADO: {
+                }, {//Sabado
                     start: '09:00',
                     end: '21:00'
-                },
-                DOMINGO: { //Tambien aplica para feriados
+                }, {//Domingo y feriados
                     start: '10:00',
                     end: '21:00'
                 }
-            }
+            ]
         }, {
             branchOffices: [9],
-            schedules: {
-                LUNES: {
+            schedules: [
+                {//Lunes
                     start: '10:00',
                     end: '22:00'
-                },
-                MARTES: {
+                }, {//Martes
                     start: '10:00',
                     end: '22:00'
-                },
-                MIERCOLES: {
+                }, {//Miercoles
                     start: '10:00',
                     end: '22:00'
-                },
-                JUEVES: {
+                }, {//Jueves
                     start: '10:00',
                     end: '22:00'
-                },
-                VIERNES: {
+                }, {//Viernes
                     start: '10:00',
                     end: '22:00'
-                },
-                SABADO: {
+                }, {//Sabado
                     start: '10:00',
                     end: '22:00'
-                },
-                DOMINGO: { //Tambien aplica para feriados
+                }, {//Domingo y feriados
                     start: '11:00',
                     end: '21:00'
                 }
-            }
+            ]
         }
     ]
 }
