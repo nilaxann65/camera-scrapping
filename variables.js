@@ -1,4 +1,4 @@
-class Variables {
+class Variables {//TODO actualizar las urls de las camaras
     static CITIES = [
         {
             id: 1,

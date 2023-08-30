@@ -8,6 +8,8 @@ const cities = variables.Variables.CITIES;
 const dateStart = new Date("01/01/2023");
 const dateEnd = new Date("04/30/2023");
 
+const fileName = `file_${new Date().toISOString().replace(/:/g, '-')}`;
+
 (async () => {
     const browser = await puppeteer.launch({
         headless: false
@@ -39,20 +41,21 @@ const dateEnd = new Date("04/30/2023");
                     const spanTexts = await page.$$eval('.table-body > div > span', spans => {
                         return spans.map(span => span.textContent);
                     });
-                    const scheduledTrafic = utils.getScheduledTrafic(spanTexts, currentDaySchedule);
-                    const resultData = {
+                    const trafic = utils.getScheduledTrafic(spanTexts, currentDaySchedule);
+                    const finalResult = {
                         year: date.getFullYear(),
                         month: date.getMonth() + 1,
                         day: date.getDate(),
                         branchOffice: branchOffice.id,
                         city: city.id,
-                        trafic: scheduledTrafic
+                        trafic: trafic
                     }
-                    console.log(resultData);
-
+                    utils.uploadToFile(fileName, finalResult);
                     date.setDate(date.getDate() + 1);
                 }
             }
+
+            //aquí es el uploadToFile
         }
     }
 
